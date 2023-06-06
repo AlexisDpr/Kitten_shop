@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'products#index'
+  devise_for :users
   resources :products, only: [:index, :show]
   # d'autres routes ici...
 end
