@@ -1,1 +1,13 @@
-Test
+<div class="product-show">
+  <%= image_tag(@product.image, alt: @product.name, class: 'img-fluid', size: "800x600") %>
+  <h2><%= @product.name %></h2>
+  <p><%= @product.description %></p>
+  <p><%= @product.price %> €</p>
+</div>
+
+<% if user_signed_in? %>
+  <%= button_to 'Ajouter au panier', { action: "add", controller: "carts", product_id: @product.id }, method: :post, class: "btn btn-primary" %>
+<% else %>
+  <%= link_to 'Connectez-vous pour ajouter au panier', new_user_session_path, class: 'btn btn-primary' %>
+<% end %>
+
