@@ -19,33 +19,33 @@
                         <!-- Portfolio item 1-->
                         <% item1 = Product.all.sample %>
                         <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                            
+                            <%= link_to product_path(item1), class: 'portfolio-link' do %>               
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
                                 
 
                                 <%= image_tag(item1.image, alt: item1.name, class: 'img-fluid',:size => "600x450") %>
-                               
-                                </a>
+                               <% end %>
                                 <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading"><%= item1.name%></div>
-                                <div class="portfolio-caption-subheading text-muted"><%= item1.price%> €</div>
+                                    <div class="portfolio-caption-heading"><%= item1.name%></div>
+                                    <div class="portfolio-caption-subheading text-muted"><%= item1.price%> €</div>
                                 </div>
-
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 2-->
                         <% item2 = Product.all.sample %>
                         <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                            
+                            <%= link_to product_path(item2), class: 'portfolio-link' do %>               
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-
+                                
 
                                 <%= image_tag(item2.image, alt: item2.name, class: 'img-fluid',:size => "600x450") %>
+                               <% end %>
 
                                
                                 </a>
@@ -59,12 +59,15 @@
                         <!-- Portfolio item 3-->
                         <% item3 = Product.all.sample %>
                         <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+                            
+                            <%= link_to product_path(item3), class: 'portfolio-link' do %>               
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
+                                
 
                                 <%= image_tag(item3.image, alt: item3.name, class: 'img-fluid',:size => "600x450") %>
+                               <% end %>
                                
                                 </a>
                                 <div class="portfolio-caption">
@@ -78,13 +81,15 @@
                         <!-- Portfolio item 4-->
                         <% item4 = Product.all.sample %>
                         <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
+                            
+                            <%= link_to product_path(item4), class: 'portfolio-link' do %>               
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-
+                                
 
                                 <%= image_tag(item4.image, alt: item4.name, class: 'img-fluid',:size => "600x450") %>
+                               <% end %>
 
                                
                             </a>
@@ -98,12 +103,15 @@
                         <!-- Portfolio item 5-->
                         <% item5 = Product.all.sample %>
                         <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
+                            
+                            <%= link_to product_path(item5), class: 'portfolio-link' do %>               
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
+                                
 
-                                  <%= image_tag(item5.image, alt: item5.name, class: 'img-fluid',:size => "600x450") %>
+                                <%= image_tag(item5.image, alt: item5.name, class: 'img-fluid',:size => "600x450") %>
+                               <% end %>
                                
                             </a>
                             <div class="portfolio-caption">
@@ -116,13 +124,15 @@
                         <!-- Portfolio item 6-->
                         <% item6 = Product.all.sample %>
                         <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
+                            
+                            <%= link_to product_path(item6), class: 'portfolio-link' do %>               
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
+                                
 
                                 <%= image_tag(item6.image, alt: item6.name, class: 'img-fluid',:size => "600x450") %>
-                               
+                               <% end %>                               
                                 </a>
                                 <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading"><%= item6.name%></div>
