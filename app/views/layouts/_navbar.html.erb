@@ -10,13 +10,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-            <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-            
+            <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>        
             <% if current_user %>
             <li class="nav-item"><%= link_to "Mon panier", cart_url(current_user.id), class: "nav-link #{'active' if current_page?(cart_url(current_user.id))}" %></li>
           <% end %>
-          
-
             <% unless user_signed_in? %>
                 <li class="nav-item"><%= link_to 'Log In', new_user_session_path, class: 'nav-link' %></li>
                 <li class="nav-item"><%= link_to 'Subscribe', new_user_registration_path, class: 'nav-link' %></li>
