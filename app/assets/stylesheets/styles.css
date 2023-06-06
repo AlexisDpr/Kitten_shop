@@ -105,6 +105,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-image: url("../assets/img/pattern.png");
+  background-repeat: repeat;
 }
 
 hr {
@@ -11316,4 +11318,19 @@ section#contact form#contactForm :-ms-input-placeholder {
   font-size: 0.9rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   margin-top: auto;
+  background-color: #fff;
+}
+
+#devise-login {
+ background-color: #998675 !important;
+}
+
+.custom-login-btn {
+  background-color: #998675 !important; /* Changez la couleur selon vos préférences */
+  border-color: #998675 !important; /* Assurez-vous que la couleur de la bordure correspond à celle de l'arrière-plan pour conserver le style du bouton */
+}
+
+.devise-link {
+  color: #666666 !important; /* Votre couleur souhaitée ici */
+  text-decoration: none !important;
 }
