@@ -1,5 +1,5 @@
 <ul class="list-group list-group-flush m-4">
-  <%= render partial: "photos/photo_row", collection: @cart.photos, as: :photo %>
+  <%= render partial: "photos/photo_row", collection: @cart.products, as: :product %>
   <li class="list-group-item d-flex gap-5 py-3 justify-content-end">
     <p class="mb-0">Total de la commande :</p>
     <strong class="text-nowrap"><%= number_to_currency(@total_price_cart, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></strong>

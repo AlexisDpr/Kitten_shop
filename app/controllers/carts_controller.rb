@@ -10,15 +10,15 @@ class CartsController < ApplicationController
 
 
   def add_to_cart
-    @photo = Photo.find(params[:id])
+    @product = Product.find(params[:id])
 
     if user_signed_in?
       @cart = Cart.find_by(user_id: current_user.id)
-      @cart.add_photo_to_cart(@photo)
-      redirect_to photos_path, notice: "Photo ajoutée au panier"
+      @cart.add_product_to_cart(@product)
+      redirect_to products_path, notice: "Photo ajoutée au panier"
     else
 
-      session[:photo] = @photo
+      session[:product] = @product
       redirect_to new_user_session_path
     end
   end
@@ -27,8 +27,8 @@ class CartsController < ApplicationController
     
       @cart = Cart.find_or_create_by(user_id: current_user.id)
       @total_price_cart = 0
-      @cart.photos.each do |photo|
-        @total_price_cart += photo.price
+      @cart.products.each do |product|
+        @total_price_cart += product.price
       end
       return @total_price_cart
   end
