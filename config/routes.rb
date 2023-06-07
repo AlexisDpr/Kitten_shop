@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :carts, only: [:index, :show, :edit, :new, :create, :update, :destroy]
   post '/add_to_cart/:product_id', to: 'carts#add_to_cart', as: 'add_to_cart'
   delete '/remove_from_cart/:product_id', to: 'carts#remove_from_cart', as: 'remove_from_cart'
-  get 'users/profile'
+  get 'users/profile', to: 'users#profile', as: 'user_profile'
+
 
   # d'autres routes ici...
 end
