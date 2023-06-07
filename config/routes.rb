@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :products, only: [:index, :show]
   resources :carts, only: [:index, :show, :edit, :new, :create, :update, :destroy]
-  post 'add_to_cart', to: 'carts#add_to_cart', as: 'add_to_cart'
+  post '/add_to_cart/:product_id', to: 'carts#add_to_cart', as: 'add_to_cart'
   get 'users/profile'
+
   # d'autres routes ici...
 end

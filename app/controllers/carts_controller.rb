@@ -10,19 +10,18 @@ class CartsController < ApplicationController
 
 
   def add_to_cart
-    @product = Product.find(params[:id])
-
+    @product = Product.find(params[:product_id])
+  
     if user_signed_in?
-      @cart = Cart.find_by(user_id: current_user.id)
+      @cart = Cart.find_or_create_by(user_id: current_user.id)
       @cart.add_product_to_cart(@product)
-      redirect_to products_path, notice: "Photo ajoutée au panier"
+      redirect_to root_path(anchor: 'portfolio'), notice: "Photo ajoutée au panier"
     else
-
       session[:product] = @product
       redirect_to new_user_session_path
     end
   end
-
+  
   def total_of_cart
     
       @cart = Cart.find_or_create_by(user_id: current_user.id)
@@ -35,7 +34,15 @@ class CartsController < ApplicationController
 
   def show
     @cart = Cart.find_by(user_id: current_user.id)
+  
+    if @cart.nil?
+      flash[:alert] = "Votre panier est vide"
+      redirect_to root_path and return
+    else
+      @products = @cart.products
+    end
   end
+  
 
   def new
     @cart = Cart.new
