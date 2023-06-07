@@ -13,12 +13,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% (current_user.orders).all.each do |order| %>
+                    <% previous_order = 0 %>
+                        <% (current_user.orders).all.reverse_each do |order| %>
+                            <% order_now = order.created_at.to_s %>
+                            <%if previous_order.to_s == order_now%>
+                            <% else %>
+                                <tr class= "bg-secondary">
+                                    <td colspan="3">Commande du <%= order.created_at.strftime('%d/%m/%Y %H:%M') %> </td>
+                                </tr>
+                            <%end%>
                         <tr>
                             <% item = order.product%>
                             <td><%= order.id %></td>
                             <td><%= item.name %></td>
                             <td><%= order.created_at.strftime('%d/%m/%Y %H:%M') %></td>
+                            <% previous_order = order.created_at %>
                         </tr>
                         <%end%>
                     </tbody>
