@@ -7,4 +7,9 @@ class Cart < ApplicationRecord
   def add_product_to_cart(product)
     self.products << product
   end
+
+  def remove_product_from_cart(product)
+    self.products.delete(product)
+  end
+  
 end
