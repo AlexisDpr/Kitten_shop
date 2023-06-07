@@ -11,6 +11,7 @@
               <%= flash[:error] %>
             </div>
           <% end %>
+          <%= hidden_field_tag :cart_id, @cart.id %>
           <div class="mb-3">
             <label for="amount" class="form-label">Montant :</label>
             <input type="text" class="form-control" id="amount" value="<%= @total_price %>" readonly>
