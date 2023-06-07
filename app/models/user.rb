@@ -6,9 +6,6 @@ class User < ApplicationRecord
   has_one :cart, dependent: :destroy
   has_many :orders
 
-  after_create :create_cart, :welcome_send
-  
-
   def create_cart
     Cart.create!(
       user_id: self.id
