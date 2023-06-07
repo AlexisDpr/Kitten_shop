@@ -63,8 +63,8 @@ class CartsController < ApplicationController
     (current_user.cart).products.all.each do |product|
       Order.create(user:current_user,product:product)
       current_user.cart.remove_product_from_cart(product)
-      redirect_to "/users/profile"
     end
+    redirect_to "/users/profile"
   end
 
   private
