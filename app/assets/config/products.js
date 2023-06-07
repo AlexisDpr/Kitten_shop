@@ -12,7 +12,6 @@ $(document).ready(function() {
         method: 'POST',
         success: function(data) {
           // Mettre à jour le panier sur la page avec les nouvelles données
-          // (vous devrez peut-être adapter ce code en fonction de la façon dont vous voulez mettre à jour le panier)
           $("#cart").html(data);
         }
       });
