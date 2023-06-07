@@ -59,6 +59,13 @@ class CartsController < ApplicationController
     redirect_to cart_path(@cart), notice: "Produit supprimé du panier."
   end
   
+  def test_order
+    (current_user.cart).products.all.each do |product|
+      Order.create(user:current_user,product:product)
+      current_user.cart.remove_product_from_cart(product)
+      redirect_to "/users/profile"
+    end
+  end
 
   private
     def set_cart     
