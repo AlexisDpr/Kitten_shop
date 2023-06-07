@@ -1,0 +1,30 @@
+<body>
+    <div class="container text-center">
+        <div class="page-section bg-light">     
+            <% if user_signed_in? %>
+            <p>Email du compte : <%=current_user.email%></p>
+            <table>
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <td>Numéro de commande</td>
+                        <td>Contenu de la commande</td>
+                        <td>date de la commande</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% (current_user.orders).all.each do |order| %>
+                    <tr>
+                        <% item = order.product%>
+                        <td><p><%= order.id %></p></td>
+                        <td><p><%= item.name %></p></td>
+                        <td><p><%= item.created_at %></p></td>
+                    </tr>
+                    <%end%>
+                </tbody>
+                <% else %>
+                <%= button_to 'Connecte-toi pour accéder a ton profil', new_user_session_path, class: 'btn btn-primary btn-xl' %>
+                <% end %>
+            </table>
+        </div>
+    </div>
+</body>
