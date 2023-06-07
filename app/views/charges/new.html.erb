@@ -1,0 +1,29 @@
+<%= form_tag charges_path, class: 'container mt-5' do %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Finaliser le paiement</h3>
+        </div>
+        <div class="card-body">
+          <% if flash[:error].present? %>
+            <div class="alert alert-danger" role="alert">
+              <%= flash[:error] %>
+            </div>
+          <% end %>
+          <div class="mb-3">
+            <label for="amount" class="form-label">Montant :</label>
+            <input type="text" class="form-control" id="amount" value="<%= @total_price %>" readonly>
+          </div>
+        </div>
+        <div class="card-footer text-center">
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                  data-description="A month's subscription"
+                  data-amount="<%= (@cart.total_price * 100).to_i %>"
+                  data-locale="auto"></script>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

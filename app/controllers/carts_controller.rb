@@ -35,8 +35,10 @@ class CartsController < ApplicationController
   end
 
   def show
-    @cart = Cart.find_by(user_id: current_user.id)
-  
+    @cart = Cart.find_by!(user_id: current_user.id)
+    @products = @cart.products
+    total_price = @products.sum(:price)
+    session[:total_price] = total_price
     if @cart.nil?
       flash[:alert] = "Votre panier est vide"
       redirect_to root_path and return

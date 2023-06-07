@@ -11,5 +11,9 @@ class Cart < ApplicationRecord
   def remove_product_from_cart(product)
     self.products.delete(product)
   end
+
+  def total_price
+    products.sum(:price)
+  end
   
 end

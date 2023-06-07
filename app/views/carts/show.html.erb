@@ -4,7 +4,7 @@
     <% if @products.empty? %>
       <p class="text-center">Your cart is empty</p>
     <% else %>
-      <% total_price=0%>
+      <% total_price = 0 %>
       <% @products.each do |product| %>
         <div class="col-md-4 mt-4">
           <div class="card">
@@ -12,7 +12,7 @@
             <div class="card-body">
               <h5 class="card-title"><%= product.name %></h5>
               <p class="card-text"><%= product.price %>€</p>
-              <% total_price= total_price + product.price %>
+              <% total_price = total_price + product.price %>
               <div class="text-center">
                 <%= button_to 'Remove from cart', { action: 'remove_from_cart', product_id: product.id }, method: :delete, data: { confirm: 'Are you sure ?' }, class: 'btn btn-danger' %>
               </div>
@@ -20,9 +20,10 @@
           </div>
         </div>
       <% end %>
+      <% session[:total_price] = total_price %>
       <div class="col-12 text-center mt-3">
-        <h5 id="total_price"> Total Price : <%= total_price%> € </h3>
-        <%= button_to 'Validate cart',{ action: 'test_order'},data: { confirm: 'Are you sure ?' }, class: 'btn btn-success' %>
+        <h5 id="total_price"> Total Price : <%= total_price %> € </h3>
+          <%= button_to 'Validate cart', new_charge_path(@cart), method: :get, class: 'btn btn-success' %>
       </div>
     <% end %>
   </div>
