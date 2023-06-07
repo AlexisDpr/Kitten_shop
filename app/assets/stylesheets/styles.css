@@ -11340,3 +11340,16 @@ section#contact form#contactForm :-ms-input-placeholder {
   margin-top: 10rem;
 }
 
+#cart_show_block {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 15px; /* Pour rendre les bords un peu arrondis */
+  margin-top: -7rem;
+  margin-bottom: 2rem;
+}
+
+
+
+#cards_show_cart{
+  margin-bottom: 2rem;
+}
