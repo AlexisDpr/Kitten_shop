@@ -14,9 +14,8 @@
                     </thead>
                     <tbody>
                     <% previous_order = 0 %>
-                        <% (current_user.orders).all.each do |order| %>
+                        <% (current_user.orders).all.reverse_each do |order| %>
                             <% order_now = order.created_at.to_s %>
-                                <p> <%= order.created_at%> = <%=previous_order %> </p>
                             <%if previous_order.to_s == order_now%>
                             <% else %>
                                 <tr class= "bg-secondary">
