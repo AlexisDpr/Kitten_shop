@@ -9,7 +9,7 @@
                         <tr>
                             <th scope="col">Numéro de commande</th>
                             <th scope="col">Contenu de la commande</th>
-                            <th scope="col">Date de la commande</th>
+                            <th scope="col">Prix de la commande</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,7 +26,7 @@
                             <% item = order.product%>
                             <td><%= order.id %></td>
                             <td><%= item.name %></td>
-                            <td><%= order.created_at.strftime('%d/%m/%Y %H:%M') %></td>
+                            <td><%= item.price%> €</td>
                             <% previous_order = order.created_at %>
                         </tr>
                         <%end%>
