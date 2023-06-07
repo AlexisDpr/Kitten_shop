@@ -6,6 +6,9 @@
       <p><%= @product.description %></p>
       <p><%= @product.price %> €</p>
     </div>
+
+    <!-- check if user is signed-->
+
     <% if user_signed_in? %>
       <%= button_to 'Ajouter au panier', { action: "add", controller: "carts", product_id: @product.id }, method: :post, class: "btn btn-primary btn-xl" %>
     <% else %>
