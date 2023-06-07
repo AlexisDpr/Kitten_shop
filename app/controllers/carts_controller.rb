@@ -64,7 +64,7 @@ class CartsController < ApplicationController
       Order.create(user:current_user,product:product)
       current_user.cart.remove_product_from_cart(product)
     end
-    redirect_to "/users/profile"
+    redirect_to "/myprofile"
   end
 
   private
