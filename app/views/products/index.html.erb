@@ -31,9 +31,9 @@
                                 <div class="portfolio-caption">
                                     <div class="portfolio-caption-heading"><%= item1.name%></div>
                                     <div class="portfolio-caption-subheading text-muted"><%= item1.price%> €</div>
-                                     <% if user_signed_in? %> <!-- Vérifier si l'utilisateur est connecté -->
-                                        <%= button_to 'Add to Cart', add_to_cart_path(item1), method: :post, class: 'btn btn-primary' %>
-                                    <% end %>
+                                <% if user_signed_in? %> <!-- Vérifier si l'utilisateur est connecté -->
+                                <%= button_to 'Add to Cart', add_to_cart_path(item1.id), method: :post, class: 'btn btn-primary' %>
+                                <% end %>
                                 </div>
                         </div>
                     </div>
