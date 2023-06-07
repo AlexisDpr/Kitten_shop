@@ -40,6 +40,8 @@ gem "devise"
 
 gem 'font-awesome-sass'
 
+gem "jquery-rails"
+
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
