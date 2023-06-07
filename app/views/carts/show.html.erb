@@ -1,9 +1,10 @@
 <div class="container mt-5" id="cart_show_block">
-  <h1 class="text-center" id="cart_show">Mon Panier</h1>
+  <h1 class="text-center" id="cart_show">Your Cart</h1>
   <div class="row" id="cards_show_cart">
     <% if @products.empty? %>
-      <p class="text-center">Votre panier est vide</p>
+      <p class="text-center">Your cart is empty</p>
     <% else %>
+      <% total_price=0%>
       <% @products.each do |product| %>
         <div class="col-md-4 mt-4">
           <div class="card">
@@ -11,11 +12,16 @@
             <div class="card-body">
               <h5 class="card-title"><%= product.name %></h5>
               <p class="card-text"><%= product.price %>€</p>
-              <%= button_to 'Supprimer du panier', { action: 'remove_from_cart', product_id: product.id }, method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'btn btn-danger' %>
+              <% total_price= total_price + product.price %>
+              <%= button_to 'Remove from cart', { action: 'remove_from_cart', product_id: product.id }, method: :delete, data: { confirm: 'Are you sure ?' }, class: 'btn btn-danger' %>
             </div>
           </div>
         </div>
       <% end %>
+      <div class="col-12 text-center mt-3">
+        <p> Total Price : <%= total_price%> € </p>
+        <%= button_to 'Validate cart',{ action: 'test_order'},data: { confirm: 'Are you sure ?' }, class: 'btn btn-success' %>
+      </div>
     <% end %>
   </div>
 </div>
