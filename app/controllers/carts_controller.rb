@@ -2,6 +2,8 @@ class CartsController < ApplicationController
   before_action :set_cart, only: %i[ show edit update destroy add_to_cart]
   before_action :owner?, only: [:show, :destroy, :edit, :update]
   before_action :total_of_cart, only: [:show]
+  before_action :set_cart, only: %i[ show edit update destroy add_to_cart remove_from_cart]
+
   
 
   def index
@@ -51,40 +53,12 @@ class CartsController < ApplicationController
   def edit
   end
 
-  def create
-    @cart = Cart.create(user_id: current_user.id)
-
-    respond_to do |format|
-      if @cart.save
-        format.html { redirect_to cart_url(@cart), notice: "Cart was successfully created." }
-        format.json { render :show, status: :created, location: @cart }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
-      end
-    end
+  def remove_from_cart
+    @product = Product.find(params[:product_id])
+    @cart.remove_product_from_cart(@product)
+    redirect_to cart_path(@cart), notice: "Produit supprimé du panier."
   end
-
-  def update
-    respond_to do |format|
-      if @cart.update(cart_params)
-        format.html { redirect_to cart_url(@cart), flash: { success: "Votre panier a été mis à jour." } }
-        format.json { render :show, status: :ok, location: @cart }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @cart.destroy
-
-    respond_to do |format|
-      format.html { redirect_to carts_url, flash: { success: "La photo a été supprimée de votre panier." } }
-      format.json { head :no_content }
-    end
-  end
+  
 
   private
     def set_cart     
