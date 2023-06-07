@@ -11,166 +11,36 @@
         <section class="page-section bg-light" id="portfolio">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">photos disponibles</h2>
-                    <h3 class="section-subheading text-muted">Séléctionés pour vous grâce a notre algorithme très précis : Le Hasard !</h3>
+                    <h2 class="section-heading text-uppercase">Photos disponibles</h2>
+                    <h3 class="section-subheading text-muted">Sélectionnées pour vous grâce à notre algorithme très précis : Le Hasard !</h3>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 1-->
-                        <% item1 = Product.all.sample %>
-                        <div class="portfolio-item">
-                            
-                            <%= link_to product_path(item1), class: 'portfolio-link' do %>               
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fa-solid fa-magnifying-glass fa-3x"></i></div>
-                                </div>
-                                
+                    <% 6.times do %> <!-- répéter 6 fois -->
+                        <div class="col-lg-4 col-sm-6 mb-4">
+                            <% item = Product.all.sample %> <!-- Sélectionner un produit au hasard -->
+                            <div class="portfolio-item">
 
-                                <%= image_tag(item1.image, alt: item1.name, class: 'img-fluid',:size => "600x450") %>
-                               <% end %>
-                                <div class="portfolio-caption">
-                                    <div class="portfolio-caption-heading"><%= item1.name%></div>
-                                    <div class="portfolio-caption-subheading text-muted"><%= item1.price%> €</div>
-                                <% if user_signed_in? %> <!-- Vérifier si l'utilisateur est connecté -->
-                                <%= button_to 'Add to Cart', add_to_cart_path(item1.id), method: :post, class: 'btn btn-primary' %>
-                                <% end %>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <% item2 = Product.all.sample %>
-                        <div class="portfolio-item">
-                            
-                            <%= link_to product_path(item2), class: 'portfolio-link' do %>               
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fa-solid fa-magnifying-glass fa-3x"></i></i></div>
-                                </div>
-                                
-
-                                <%= image_tag(item2.image, alt: item2.name, class: 'img-fluid',:size => "600x450") %>
-                               <% end %>
-
-                               
-                                </a>
-                                <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading"><%= item2.name%></div>
-                                <div class="portfolio-caption-subheading text-muted"><%= item2.price%> €</div>
-                                <% if user_signed_in? %> <!-- Vérifier si l'utilisateur est connecté -->
-                                    <%= button_to 'Add to Cart', add_to_cart_path(item2), method: :post, class: 'btn btn-primary' %>
-                                <% end %>
-                               
-                                </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 3-->
-                        <% item3 = Product.all.sample %>
-                        <div class="portfolio-item">
-                            
-                            <%= link_to product_path(item3), class: 'portfolio-link' do %>               
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fa-solid fa-magnifying-glass fa-3x"></i></i></div>
-                                </div>
-                                
-
-                                <%= image_tag(item3.image, alt: item3.name, class: 'img-fluid',:size => "600x450") %>
-                               <% end %>
-                               
-                                </a>
-                                <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading"><%= item3.name%></div>
-                                <div class="portfolio-caption-subheading text-muted"><%= item3.price%> €</div>
-                                <% if user_signed_in? %> <!-- Vérifier si l'utilisateur est connecté -->
-                                    <%= button_to 'Add to Cart', add_to_cart_path(item3), method: :post, class: 'btn btn-primary' %>
+                                <%= link_to product_path(item), class: 'portfolio-link' do %>               
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content"><i class="fa-solid fa-magnifying-glass fa-3x"></i></div>
+                                    </div>
+                                    <%= image_tag(item.image, alt: item.name, class: 'img-fluid', :size => "600x450") %>
                                 <% end %>
 
+                                <div class="portfolio-caption">
+                                    <div class="portfolio-caption-heading"><%= item.name %></div>
+                                    <div class="portfolio-caption-subheading text-muted"><%= item.price %> €</div>
+                                    <% if user_signed_in? %> <!-- Vérifier si l'utilisateur est connecté -->
+                                        <%= button_to 'Add to Cart', add_to_cart_path(item.id), method: :post, class: 'btn btn-primary' %>
+                                    <% end %>
                                 </div>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-                        <!-- Portfolio item 4-->
-                        <% item4 = Product.all.sample %>
-                        <div class="portfolio-item">
-                            
-                            <%= link_to product_path(item4), class: 'portfolio-link' do %>               
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fa-solid fa-magnifying-glass fa-3x"></i></i></div>
-                                </div>
-                                
-
-                                <%= image_tag(item4.image, alt: item4.name, class: 'img-fluid',:size => "600x450") %>
-                               <% end %>
-
-                               
-                            </a>
-                            <div class="portfolio-caption">
-                            <div class="portfolio-caption-heading"><%= item4.name%></div>
-                            <div class="portfolio-caption-subheading text-muted"><%= item4.price%> €</div>
-                            <% if user_signed_in? %> <!-- Vérifier si l'utilisateur est connecté -->
-                                <%= button_to 'Add to Cart', add_to_cart_path(item4), method: :post, class: 'btn btn-primary' %>
-                            <% end %>
-
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-                        <!-- Portfolio item 5-->
-                        <% item5 = Product.all.sample %>
-                        <div class="portfolio-item">
-                            
-                            <%= link_to product_path(item5), class: 'portfolio-link' do %>               
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fa-solid fa-magnifying-glass fa-3x"></i></i></div>
-                                </div>
-                                
-
-                                <%= image_tag(item5.image, alt: item5.name, class: 'img-fluid',:size => "600x450") %>
-                               <% end %>
-                               
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading"><%= item5.name%></div>
-                                <div class="portfolio-caption-subheading text-muted"><%= item5.price%> €</div>
-                                <% if user_signed_in? %> <!-- Vérifier si l'utilisateur est connecté -->
-                                    <%= button_to 'Add to Cart', add_to_cart_path(item5), method: :post, class: 'btn btn-primary' %>
-                                <% end %>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <!-- Portfolio item 6-->
-                        <% item6 = Product.all.sample %>
-                        <div class="portfolio-item">
-                            
-                            <%= link_to product_path(item6), class: 'portfolio-link' do %>               
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fa-solid fa-magnifying-glass fa-3x"></i></i></div>
-                                </div>
-                                
-
-                                <%= image_tag(item6.image, alt: item6.name, class: 'img-fluid',:size => "600x450") %>
-                               <% end %>                               
-                                </a>
-                                <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading"><%= item6.name%></div>
-                                <div class="portfolio-caption-subheading text-muted"><%= item6.price%> €</div>
-                                 <% if user_signed_in? %> <!-- Vérifier si l'utilisateur est connecté -->
-                                    <%= button_to 'Add to Cart', add_to_cart_path(item6), method: :post, class: 'btn btn-primary' %>
-                                <% end %>
-                               
-                                </div>
-                        </div>
-                        </div>
-                    </div>
+                    <% end %>
                 </div>
             </div>
         </section>
-
-    
-
-
+        
         <!-- Contact-->
         <section class="page-section" id="contact">
             <div class="container">
