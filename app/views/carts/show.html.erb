@@ -1,17 +1,21 @@
 <div class="container mt-5" id="cart_show_block">
   <h1 class="text-center" id="cart_show">Mon Panier</h1>
   <div class="row" id="cards_show_cart">
-    <% @products.each do |product| %>
-      <div class="col-md-4 mt-4">
-        <div class="card">
-          <%= image_tag(product.image, alt: product.name, class: 'card-img-top') %>
-          <div class="card-body">
-            <h5 class="card-title"><%= product.name %></h5>
-            <p class="card-text"><%= product.price %>€</p>
-            <%= button_to 'Supprimer du panier', { action: 'remove_from_cart', product_id: product.id }, method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'btn btn-danger' %>
+    <% if @products.empty? %>
+      <p class="text-center">Votre panier est vide</p>
+    <% else %>
+      <% @products.each do |product| %>
+        <div class="col-md-4 mt-4">
+          <div class="card">
+            <%= image_tag(product.image, alt: product.name, class: 'card-img-top') %>
+            <div class="card-body">
+              <h5 class="card-title"><%= product.name %></h5>
+              <p class="card-text"><%= product.price %>€</p>
+              <%= button_to 'Supprimer du panier', { action: 'remove_from_cart', product_id: product.id }, method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'btn btn-danger' %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

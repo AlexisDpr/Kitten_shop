@@ -11338,6 +11338,8 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 #show_product{
   margin-top: 10rem;
+  border-radius: 15px; /* Pour rendre les bords un peu arrondis */
+
 }
 
 #cart_show_block {
