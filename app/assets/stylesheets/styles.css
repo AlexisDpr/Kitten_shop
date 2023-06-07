@@ -11360,3 +11360,8 @@ section#contact form#contactForm :-ms-input-placeholder {
 #available_photos{
   margin-top: 3rem;
 }
+
+#total_price{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
