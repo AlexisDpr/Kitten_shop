@@ -18,7 +18,7 @@
                             <% item = order.product%>
                             <td><%= order.id %></td>
                             <td><%= item.name %></td>
-                            <td><%= item.created_at.strftime('%d/%m/%Y %H:%M') %></td>
+                            <td><%= order.created_at.strftime('%d/%m/%Y %H:%M') %></td>
                         </tr>
                         <%end%>
                     </tbody>
