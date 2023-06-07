@@ -1,7 +1,13 @@
-<div class="container d-flex flex-column justify-content-start align-items-center">
-  <% if @cart.products.any? %>
-    <%= render @cart %>
-  <% else %>
-    <%= render "empty_cart" %>
+<h1>Mon Panier</h1>
+
+<ul>
+  <% @products.each do |product| %>
+    <li>
+      <div>
+        <%= image_tag(product.image, alt: product.name, class: 'img-fluid',:size => "200x150") %>
+        <p>Nom du produit: <%= product.name %></p>
+        <p>Prix du produit: <%= product.price %>€</p>
+      </div>
+    </li>
   <% end %>
-</div>
+</ul>

@@ -1,2 +1,6 @@
 class Product < ApplicationRecord
-end
+    has_many :selections, dependent: :destroy
+    has_many :carts, through: :selections
+    # autres associations et méthodes
+  end
+  
