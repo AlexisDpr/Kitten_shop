@@ -1,5 +1,5 @@
 <div class="container d-flex flex-column justify-content-start align-items-center">
-  <% if @cart.photos.any? %>
+  <% if @cart.products.any? %>
     <%= render @cart %>
   <% else %>
     <%= render "empty_cart" %>
