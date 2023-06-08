@@ -7,8 +7,10 @@
       <p><%= @product.price %> €</p>
     </div>
     <% if user_signed_in? %>
-      <%= button_to 'Ajouter au panier', add_to_cart_path(@product.id), method: :post, class: "btn btn-primary btn-xl" %>
-
+      <%= button_to 'Add to cart', add_to_cart_path(@product.id), method: :post, class: "btn btn-primary btn-xl" %>
+      <% if current_user.is_admin %>
+        <%= link_to 'Edit Product', "#{@product.id}/edit", class: 'btn btn-danger mb-3' %>
+      <%end%>
     <% else %>
       <%= link_to 'Connectez-vous pour ajouter au panier', new_user_session_path, class: 'btn btn-primary btn-xl' %>
     <% end %>
