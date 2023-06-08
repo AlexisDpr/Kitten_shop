@@ -44,7 +44,7 @@ gem "jquery-rails"
 
 gem 'stripe'
 
-
+gem 'yarn'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
