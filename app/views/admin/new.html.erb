@@ -1,0 +1,21 @@
+<div class="container mt-5">
+    <form action="/admin/create" method="POST">
+        <div class="d-flex justify-content-center">
+            <p>Product Name :
+                <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
+                <input type="text" name="name" required="required"></p>
+                <p>Price: <input type="text" name="price" required="required">€</p>
+                
+            </div>
+            <div class="d-flex justify-content-center">
+                <p>Url: <input type="text" name="url" required="required"></p>
+            </div>
+            <p class="d-flex justify-content-center" >Description</p>
+            <p class="d-flex justify-content-center">
+                <textarea id="description" name="description" rows="4" cols="70"></textarea>
+            </p>
+            <p class="d-flex justify-content-center">
+                <input type="submit" value="Valider">
+            </p>
+        </form>
+    </div>

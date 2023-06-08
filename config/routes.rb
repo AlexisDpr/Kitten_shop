@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get 'myprofile', to: 'users#profile', as: 'user_profile'
   get 'mycart', to: 'carts#show', as: 'mycart'
   get 'all_product', to: 'products#showall', as: 'all_product'
+  get 'AdminDashboard', to: 'admin#dashboard', as: 'AdminDashboard'
+  get 'ProductNew', to: 'admin#new', as: 'ProductNew'
+  post '/admin/create', to: 'admin#create'
   
   
 end
