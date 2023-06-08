@@ -1,0 +1,35 @@
+<body>
+    <div class="container text-center mt-5">
+        <div class="bg-light p-4 rounded">  
+            <%= link_to 'Create a Product', "/ProductNew", class: 'btn btn-warning mb-3' %>
+            <table class="table table-striped">
+                <thead class="table-dark" id="dark_table">
+                    <tr>
+                        <th scope="col">OrderID</th>
+                        <th scope="col">Content</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% previous_order = 0 %>
+                    <%Order.all.reverse_each do |order| %>
+                        <% order_now = order.created_at.to_s %>
+                        <%if previous_order.to_s == order_now%> <!-- probably Upgradable by adding "&& user_now != previous_user"-->
+                    <% else %>
+                        <tr class= "bg-secondary" id="order_band">
+                            <td colspan="3">Ordered the  <%= order.created_at.strftime('%d/%m/%Y') %> at <%= order.created_at.strftime('%H:%M') %> by <%= (order.user).email%> </td>
+                        </tr>
+                    <%end%>
+                    <tr>
+                        <% item = order.product%>
+                        <td><%= order.id %></td>
+                        <td><%= item.name %></td>
+                        <td><%= item.price%> €</td>
+                        <% previous_order = order.created_at %>
+                    </tr>
+                    <%end%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
