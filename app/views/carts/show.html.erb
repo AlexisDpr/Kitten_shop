@@ -1,8 +1,8 @@
 <div class="container mt-5" id="cart_show_block">
-  <h1 class="text-center" id="cart_show">Your Cart <i class="fa-solid fa-cart-shopping"></i></h1>
+  <h1 class="text-center" id="cart_show">Votre Panier <i class="fa-solid fa-cart-shopping"></i></h1>
   <div class="row" id="cards_show_cart">
     <% if @products.empty? %>
-      <p class="text-center">Your cart is empty</p>
+      <p class="text-center">Votre panier est vide</p>
     <% else %>
       <% total_price = 0 %>
       <% @products.each do |product| %>
@@ -11,10 +11,20 @@
             <%= image_tag(product.image, alt: product.name, class: 'card-img-top') %>
             <div class="card-body">
               <h5 class="card-title"><%= product.name %></h5>
-              <p class="card-text"><%= product.price %>€</p>
-              <% total_price = total_price + product.price %>
+              <% selection = @cart.selections.find_by(product_id: product.id) %>
+              <p class="card-text"><%= product.price * selection.quantity %>€</p>
+              <% total_price = total_price + (product.price * selection.quantity) %>
+
+              <!-- Ajouter un formulaire pour sélectionner la quantité -->
+              <%= form_with(url: { action: 'update_quantity_in_cart', product_id: product.id }, method: :post) do %>
+                <%= select_tag(:quantity, options_for_select((1..10), selected: selection.quantity), class: 'form-select') %>
+                <div class="text-center">
+                <%= submit_tag('Mettre à jour la quantité', class: 'btn btn-primary mt-2') %>
+                </div>
+              <% end %>
+
               <div class="text-center">
-                <%= button_to 'Remove from cart', { action: 'remove_from_cart', product_id: product.id }, method: :delete, data: { confirm: 'Are you sure ?' }, class: 'btn btn-danger' %>
+                <%= button_to 'Retirer du panier', { action: 'remove_from_cart', product_id: product.id }, method: :delete, data: { confirm: 'Etes-vous sûr ?' }, class: 'btn btn-danger' %>
               </div>
             </div>
           </div>
@@ -22,7 +32,7 @@
       <% end %>
       <% session[:total_price] = total_price %>
       <div class="col-12 text-center mt-3">
-        <h5 id="total_price"> Total Price : <%= total_price %> € </h3>
+        <h5 id="total_price"> Prix Total : <%= total_price %> € </h5>
           <%= button_to 'Valider le panier', new_charge_path(cart_id: @cart.id), method: :get, class: 'btn btn-success' %>
       </div>
     <% end %>
