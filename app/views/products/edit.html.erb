@@ -1,0 +1,26 @@
+<body>
+    <div class="container text-center mt-5">
+        <div class="bg-light p-4 rounded"> 
+            <h1 class="d-flex justify-content-center"> Edit a product </h1>
+            <div class="d-flex justify-content-center">
+                <form action="update" method="POST">
+                    <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
+                    <p>Name : 
+                        <input type="hidden" name="id" value=<%=@product.id%> >
+                        <textarea type="text" name="name" required="required"rows="1" cols="20"><%= @product.name %></textarea>
+                        Price
+                        <textarea type="text" name="price" required="required"rows="1" cols="10"><%= @product.price %></textarea>€</p>
+                        URL
+                        <textarea type="text" name="url" required="required" rows="1" cols="70"><%= @product.image %></textarea></p>
+                        <p class="d-flex justify-content-center" > Description </p>
+                        <p class="d-flex justify-content-center">
+                            <textarea id="content" name="description" rows="10" cols="70"><%= @product.description %></textarea>
+                        </p>
+                        <p class="d-flex justify-content-center">
+                            <input type="submit" value="Valider">
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>

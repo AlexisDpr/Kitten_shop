@@ -10,6 +10,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+        <% if current_user %>
+            <% if current_user.is_admin %>
+                <li class="nav-item">
+                    <%= link_to 'Dashboard Admin', "/AdminDashboard", class: "nav-link #{'active' if current_page?("/AdminDashboard")}" %>
+                </li>
+            <% end %>
+        <% end %>
         <li class="nav-item">
             <%= link_to 'Portfolio', root_path(anchor: 'portfolio'), class: "nav-link #{'active' if current_page?(root_path(anchor: 'portfolio'))}" %>
         </li>

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'products#index'
   devise_for :users
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show, :edit ,:update]
   resources :carts, only: [:index, :show, :edit, :new, :create, :update, :destroy]
   resources :charges, only: [:new, :create]
 
@@ -20,6 +20,6 @@ Rails.application.routes.draw do
   get 'AdminDashboard', to: 'admin#dashboard', as: 'AdminDashboard'
   get 'ProductNew', to: 'admin#new', as: 'ProductNew'
   post '/admin/create', to: 'admin#create'
-  
+  post '/products/:product_id/update', to: 'products#update'
   
 end
