@@ -2,14 +2,14 @@
     <div class="container text-center mt-5">
         <div class="bg-light p-4 rounded">     
             <% if user_signed_in? %>
-                <h2 class="mb-4">Email du compte : <%=current_user.email%></h2>
+                <h2 class="mb-4">Account: <%=current_user.email%></h2>
                 <%= link_to 'Edit my profile', edit_user_registration_path, class: 'btn btn-warning mb-3' %>
                 <table class="table table-striped">
                     <thead class="table-dark" id="dark_table">
                         <tr>
-                            <th scope="col">Numéro de commande</th>
-                            <th scope="col">Contenu de la commande</th>
-                            <th scope="col">Prix de la commande</th>
+                            <th scope="col">OrderID</th>
+                            <th scope="col">Content</th>
+                            <th scope="col">Price</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -19,7 +19,7 @@
                             <%if previous_order.to_s == order_now%>
                             <% else %>
                                 <tr class= "bg-secondary" id="order_band">
-                                    <td colspan="3">Commande du <%= order.created_at.strftime('%d/%m/%Y %H:%M') %> </td>
+                                    <td colspan="3">Ordered the  <%= order.created_at.strftime('%d/%m/%Y') %> at <%= order.created_at.strftime('%H:%M') %> </td>
                                 </tr>
                             <%end%>
                         <tr>
