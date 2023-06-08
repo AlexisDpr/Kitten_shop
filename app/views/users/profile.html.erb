@@ -5,7 +5,7 @@
                 <h2 class="mb-4">Email du compte : <%=current_user.email%></h2>
                 <%= link_to 'Edit my profile', edit_user_registration_path, class: 'btn btn-warning mb-3' %>
                 <table class="table table-striped">
-                    <thead class="table-dark">
+                    <thead class="table-dark" id="dark_table">
                         <tr>
                             <th scope="col">Numéro de commande</th>
                             <th scope="col">Contenu de la commande</th>
@@ -18,7 +18,7 @@
                             <% order_now = order.created_at.to_s %>
                             <%if previous_order.to_s == order_now%>
                             <% else %>
-                                <tr class= "bg-secondary">
+                                <tr class= "bg-secondary" id="order_band">
                                     <td colspan="3">Commande du <%= order.created_at.strftime('%d/%m/%Y %H:%M') %> </td>
                                 </tr>
                             <%end%>

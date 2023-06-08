@@ -35,17 +35,16 @@ class CartsController < ApplicationController
   end
 
   def show
-    @cart = Cart.find_by!(user_id: current_user.id)
-    @products = @cart.products
-    total_price = @products.sum(:price)
+    @cart = Cart.find_by(user_id: current_user.id) || Cart.new
+    @products = @cart.products if @cart.persisted?
+    total_price = @products&.sum(:price) || 0
     session[:total_price] = total_price
-    if @cart.nil?
+    if @products.blank?
       flash[:alert] = "Votre panier est vide"
-      redirect_to root_path and return
-    else
-      @products = @cart.products
+      # Pas besoin de rediriger vers la racine. Affichez simplement le message flash sur la page du panier.
     end
   end
+  
   
 
   def new
